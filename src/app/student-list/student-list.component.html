@@ -1,0 +1,41 @@
+<button *ngIf="!edited" md-fab (click)="open()">
+<md-icon>add</md-icon>
+</button>
+
+<button *ngIf="edited" md-fab (click)="close()">
+<md-icon>close</md-icon>
+</button>
+
+<app-student-form *ngIf="edited"></app-student-form>
+
+<md-card *ngFor="let student of studentslist">
+    <md-card-subtitle>
+    <p class="right"> 
+	{{student.studentIdentification}}
+	</p></md-card-subtitle>
+    <md-card-title>{{student.lastName}}</md-card-title> 
+
+    
+
+	
+
+    <md-card-content>
+	
+
+	<b>{{student.firstName}}</b>
+	
+	
+	
+
+	</md-card-content>
+
+	<md-card-actions>
+	   <a [routerLink]="[student.$key,'subjects' ]" md-button color="primary">Subjects</a>
+	   <a md-button color="primary">Goals</a>
+	   <a md-button color="primary">Pathway</a>
+		
+
+	</md-card-actions>
+
+
+</md-card>

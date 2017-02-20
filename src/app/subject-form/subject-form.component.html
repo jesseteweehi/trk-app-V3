@@ -1,0 +1,21 @@
+<md-card>
+<form novalidate [formGroup]="form" (submit)="create(form)">
+
+    	<md-select  class="example-full-width" formControlName="faculty" name="food">
+            <md-option *ngFor="let food of faculties" [value]="food.value">
+              {{food.viewValue}}
+            </md-option>
+          </md-select>
+
+
+        
+    <button type="submit" md-raised-button color="primary">Create</button>
+
+</form>
+</md-card>
+
+{{faculties | json}}
+
+
+
+

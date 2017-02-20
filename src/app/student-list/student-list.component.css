@@ -1,0 +1,22 @@
+md-fab {    
+	left: 250px;
+}
+
+md-card {
+	width: 500px;
+	margin: auto;
+	margin-bottom: 1px;
+}
+
+md-card-subtitle {
+   display: -webkit-flex;
+   display: flex;
+}
+
+b {
+	color: grey;
+}
+
+.right {
+	margin-left: auto;
+}

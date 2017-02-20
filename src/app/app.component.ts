@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './security/auth.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  	public editorContent: string = 'My Document\'s Title';
+
+  	rows = [
+  	    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
+  	    { name: 'Dany', gender: 'Male', company: 'KFC' },
+  	    { name: 'Molly', gender: 'Female', company: 'Burger King' },
+  	];
+  	columns = [
+  	    { prop: 'name' },
+  	    { name: 'Gender' },
+  	    { name: 'Company' }
+  	];
+  
+
+	constructor(private as: AuthService) {
+	}
+
+  	ngOnInit(){
+  	}
+
+	login() {
+      this.as.login();
+	}
+
+	logout() {
+	    this.as.logout();
+	}
+
+
+
+	
 }

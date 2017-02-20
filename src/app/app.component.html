@@ -1,3 +1,12 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar [color]="primary">
+  <span>Rond</span>
+  <span class="right"> 
+  		<span *ngIf="as.auth" >{{ as.auth?.auth.displayName }}</span>
+ 	<button md-button *ngIf="!as.auth" (click)="login()" >Log In</button>
+
+  </span>
+</md-toolbar>
+
+
+
+<router-outlet></router-outlet>

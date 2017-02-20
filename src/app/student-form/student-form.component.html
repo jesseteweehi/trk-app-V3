@@ -1,0 +1,24 @@
+<md-card class="md-card-flat commentform">
+<form novalidate [formGroup]="form" (submit)="create(form)">
+
+    	    	
+    	<md-input-container class="example-full-width">
+    	     <input mdInput formControlName="firstName" placeholder="First Name">
+    	</md-input-container>
+
+    	<md-input-container class="example-full-width">
+    	     <input mdInput formControlName="lastName" placeholder="Last Name">
+    	</md-input-container>
+
+    	<md-input-container class="example-full-width">
+    	     <input mdInput formControlName="studentIdentification" placeholder="Student ID Number">
+    	</md-input-container>
+
+    	<md-input-container class="example-full-width">
+    	     <input mdInput formControlName="imageUrl" placeholder="Image URL">
+    	</md-input-container>
+        
+
+    <button type="submit" md-raised-button color="primary">Create</button>
+</form>
+</md-card>
