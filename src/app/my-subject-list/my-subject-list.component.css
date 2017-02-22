@@ -1,0 +1,18 @@
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    height: 250px;
+}
+
+md-card {
+	flex-grow: 5;
+    height: 190px;
+    margin: 10px;
+}
+
+.small {
+	flex-grow: 1;
+    height: 100px;
+    margin: 10px;
+}

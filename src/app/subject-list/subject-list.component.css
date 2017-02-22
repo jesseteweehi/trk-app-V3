@@ -1,18 +1,22 @@
-.flex-container {
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-    height: 250px;
+md-fab {    
+	left: 250px;
 }
 
 md-card {
-	flex-grow: 5;
-    height: 190px;
-    margin: 10px;
+	width: 500px;
+	margin: auto;
+	margin-bottom: 1px;
 }
 
-.small {
-	flex-grow: 1;
-    height: 100px;
-    margin: 10px;
+md-card-subtitle {
+   display: -webkit-flex;
+   display: flex;
+}
+
+b {
+	color: grey;
+}
+
+.right {
+	margin-left: auto;
 }

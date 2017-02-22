@@ -1,17 +1,44 @@
-<div class="flex-container">
-  <md-card class="mat-card-flat small">2016</md-card>
-  <md-card>Card 1</md-card>
-  <md-card>Card 2</md-card>
-  <md-card>Card 3</md-card>
-  <md-card>Card 4</md-card>
-  <md-card>Card 5</md-card>   
-</div>
+<button *ngIf="!edited" md-fab (click)="open()">
+<md-icon>add</md-icon>
+</button>
 
-<div class="flex-container">
-  <md-card class="mat-card-flat small">2017</md-card>
-  <md-card>Card 1</md-card>
-  <md-card>Card 2</md-card>
-  <md-card>Card 3</md-card>
-  <md-card>Card 4</md-card>
-  <md-card>Card 5</md-card>   
-</div>
+<button *ngIf="edited" md-fab (click)="close()">
+<md-icon>close</md-icon>
+</button>
+
+<app-subject-form *ngIf="edited"></app-subject-form>
+
+
+
+
+<md-card *ngFor="let subject of subjectlist">
+    <md-card-subtitle> {{subject.faculty}}
+    <p class="right"> 
+	{{subject.code}}
+	</p></md-card-subtitle>
+    <md-card-title>{{subject.name}}</md-card-title> 
+
+    
+
+	
+
+    <md-card-content>
+	
+
+	<b>{{subject.description}}</b>
+	
+	
+	
+
+	</md-card-content>
+
+	<md-card-actions>
+	   <a [routerLink]="[subject.$key,'standards' ]" md-button color="primary">Standards</a>
+	 <!--   <a md-button color="primary">Goals</a>
+	   <a md-button color="primary">Pathway</a> -->
+		
+
+	</md-card-actions>
+
+
+</md-card>

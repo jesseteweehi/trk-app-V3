@@ -3,6 +3,7 @@ import { Route } from "@angular/router";
 import { StudentListComponent } from './student-list/student-list.component'
 import { StudentFormComponent } from './student-form/student-form.component'
 import { SubjectListComponent } from './subject-list/subject-list.component'
+import { MySubjectListComponent } from './my-subject-list/my-subject-list.component'
 import { SubjectFormComponent } from './subject-form/subject-form.component'
 
 
@@ -10,7 +11,7 @@ import { SubjectFormComponent } from './subject-form/subject-form.component'
 export const routerConfig : Route[] = [
     {
         path: '',
-        redirectTo: 'students',
+        redirectTo: 'subjects',
         pathMatch: 'full'
     },
     {
@@ -29,37 +30,20 @@ export const routerConfig : Route[] = [
                 children:[
                     {
                         path: '',
-                        component: SubjectListComponent
-                    },
-                    {
-                        path: 'new',
-                        component: SubjectFormComponent
+                        component: MySubjectListComponent
                     }
-
                 ]
             }
-            // ,
-            // {
-            //     path: 'goals',
-            //     component: StudentFormComponent,
-            // },
-            // {
-            //     path: 'pathways',
-            //     component: StudentFormComponent,
-            // }
+        ]
+    },
+    {
+        path: 'subjects',
+        children: [
+            {
+                path: '',
+                component: SubjectListComponent,
+            }
+
         ]
     }
-    // {
-    //     path:'organisations',
-    //     children:[
-    //         {
-    //             path: '',
-    //             component: OrganisationComponent,
-    //         },
-    //         {
-    //             path: 'skills/:id',
-    //             component: SkillsComponent,
-    //         }
-    //     ]
-    // }
 ]

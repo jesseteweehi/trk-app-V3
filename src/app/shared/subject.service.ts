@@ -22,15 +22,6 @@ export class SubjectService {
   			.map(SubjectModel.fromJsonList)
   	}
 
-  	// findSubjectByYear(year:string): Observable<SubjectModel[]>{
-  	//     return this.db.list('subject', {
-  	//         query: {
-  	//             orderByChild: 'url',
-  	//             equalTo: courseUrl
-  	//         }
-  	//     })
-  	//     .map(StudentModel.fromJsonList);
-  	// }
 
   	createNewSubject(subject:any): Observable<any> {
 

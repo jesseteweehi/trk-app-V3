@@ -24,6 +24,7 @@ import { AppComponent } from './app.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
+import { MySubjectListComponent } from './my-subject-list/my-subject-list.component';
 import { SubjectFormComponent } from './subject-form/subject-form.component'
 
 
@@ -46,7 +47,9 @@ const myFirebaseAuthConfig = {
     StudentListComponent,
     StudentFormComponent,
     SubjectListComponent,
-    SubjectFormComponent
+    SubjectFormComponent,
+    MySubjectListComponent,
+    SubjectListComponent,
   ],
   imports: [
     BrowserModule,

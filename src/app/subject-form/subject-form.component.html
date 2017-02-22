@@ -1,11 +1,23 @@
 <md-card>
 <form novalidate [formGroup]="form" (submit)="create(form)">
 
-    	<md-select  class="example-full-width" formControlName="faculty" name="food">
+		<md-input-container class="example-full-width">
+		   <input placeholder="Subject Code" type="text" mdInput formControlName="code">
+		</md-input-container>
+
+		<md-input-container class="example-full-width">
+		   <input placeholder="Subject Name" type="text" mdInput formControlName="name">
+		</md-input-container>
+
+    	 <md-select  class="example-full-width" formControlName="faculty" placeholder="Faculty">
             <md-option *ngFor="let food of faculties" [value]="food.value">
               {{food.viewValue}}
             </md-option>
           </md-select>
+
+        <md-input-container class="example-full-width">
+           <textarea mdInput placeholder="Subject Description" formControlName="description"></textarea> 
+        </md-input-container>
 
 
         
@@ -14,7 +26,7 @@
 </form>
 </md-card>
 
-{{faculties | json}}
+
 
 
 

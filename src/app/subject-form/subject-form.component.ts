@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { SubjectService } from '../shared/subject.service'
 
@@ -7,7 +7,7 @@ import { SubjectService } from '../shared/subject.service'
   templateUrl: './subject-form.component.html',
   styleUrls: ['./subject-form.component.css']
 })
-export class SubjectFormComponent implements OnInit {
+export class SubjectFormComponent {
 
 	faculties: any[] = [
 	    {value: 'Arts', viewValue: 'Arts'},
@@ -26,14 +26,18 @@ export class SubjectFormComponent implements OnInit {
   	constructor(private fb:FormBuilder,
   				      private subjectService: SubjectService) {
 
-  	    this.form = this.fb.group({  
-  	        faculty: ['']
+  	    this.form = this.fb.group({
+            code: [''],
+            name: [''],  
+  	        faculty: [''],
+            description: ['']
   	    	});
 
 
   	}
 
-  	ngOnInit() {
-  	}
+    create(form) {
+      this.subjectService.createNewSubject(form.value)
+    }
 
 }
