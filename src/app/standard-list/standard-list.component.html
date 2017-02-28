@@ -1,0 +1,36 @@
+<md-sidenav-container>
+  <md-sidenav mode="side" opened="true">
+    <!-- SideNav content -->
+    <h4>Simple Drag-and-Drop</h4>
+    <md-card dnd-draggable [dragEnabled]="true" [dragData]="transferData">
+    {{transferData | json}}
+    </md-card>
+  </md-sidenav>
+
+  <!-- primary content -->
+
+  <div class="flex-container">
+    <md-card  dnd-droppable class="mat-card-flat" (onDropSuccess)="transferDataSuccess($event)">
+        Drop Here
+    </md-card>
+
+    <md-card *ngFor="let data of receivedData">
+        {{data.dragData | json}}
+    </md-card> 
+  </div>
+
+  <div class="flex-container">
+    <md-card  dnd-droppable class="mat-card-flat" (onDropSuccess)="transferDataSuccess2($event)">
+        Drop Here
+    </md-card>
+
+    <md-card *ngFor="let data of receivedData2">
+        {{data | json}}
+    </md-card> 
+  </div>
+
+</md-sidenav-container>
+
+{{transferData | json}}
+
+{{recieveddata | json}}

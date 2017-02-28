@@ -5,13 +5,13 @@ import { StudentFormComponent } from './student-form/student-form.component'
 import { SubjectListComponent } from './subject-list/subject-list.component'
 import { MySubjectListComponent } from './my-subject-list/my-subject-list.component'
 import { SubjectFormComponent } from './subject-form/subject-form.component'
-
+import { StandardListComponent } from './standard-list/standard-list.component'
 
 
 export const routerConfig : Route[] = [
     {
         path: '',
-        redirectTo: 'subjects',
+        redirectTo: 'standards..   ÷       llo',
         pathMatch: 'full'
     },
     {
@@ -42,6 +42,16 @@ export const routerConfig : Route[] = [
             {
                 path: '',
                 component: SubjectListComponent,
+            }
+
+        ]
+    },
+    {
+        path: 'standards',
+        children: [
+            {
+                path: '',
+                component: StandardListComponent,
             }
 
         ]

@@ -13,6 +13,7 @@ import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {DndModule} from 'ng2-dnd';
 
 
 import { AuthService } from './security/auth.service';
@@ -25,7 +26,9 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { MySubjectListComponent } from './my-subject-list/my-subject-list.component';
-import { SubjectFormComponent } from './subject-form/subject-form.component'
+import { SubjectFormComponent } from './subject-form/subject-form.component';
+import { StandardListComponent } from './standard-list/standard-list.component'
+
 
 
 export const firebaseConfig = {
@@ -50,6 +53,7 @@ const myFirebaseAuthConfig = {
     SubjectFormComponent,
     MySubjectListComponent,
     SubjectListComponent,
+    StandardListComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ const myFirebaseAuthConfig = {
     MaterialModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot() 
+    FroalaViewModule.forRoot(),
+    DndModule.forRoot() 
 
   ],
   providers: [AuthService, StudentService, SubjectService],
