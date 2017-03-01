@@ -1,0 +1,59 @@
+<md-card>
+<form novalidate [formGroup]="form" (submit)="create(form)">
+
+	<md-input-container class="example-full-width">
+	   <input placeholder="Field" type="text" mdInput formControlName="field">
+	</md-input-container>
+
+	<md-input-container class="example-full-width">
+	   <input placeholder="Subfield" type="text" mdInput formControlName="subfield">
+	</md-input-container>
+
+	<md-input-container class="example-full-width">
+	   <input placeholder="Domain" type="text" mdInput formControlName="domain">
+	</md-input-container>
+
+	<md-radio-group formControlName="standardtype">
+	  <md-radio-button selected="selected" value="Achievement Standard">Achievement Standard</md-radio-button>
+	  <md-radio-button value="Unit Standard">Unit Standard</md-radio-button>
+	</md-radio-group>
+
+	<br>
+
+	<md-radio-group formControlName="assessmenttype">
+	  <md-radio-button value="Internal Assessment">Internal Assessment</md-radio-button>
+	  <md-radio-button value="External Assessment">External Assessment</md-radio-button>
+	</md-radio-group>
+
+	<br>
+
+	Standard Level
+
+	<md-slider #level formControlName="level" min="1" max="3" step="1" value="1" thumbLabel tickInterval="1"></md-slider>
+
+	<br>
+
+	<md-input-container class="example-full-width">
+	   <input placeholder="Standard Number" type="text" mdInput formControlName="number">
+	</md-input-container>
+
+	<md-input-container class="example-full-width">
+	   <input placeholder="Standard Title" type="text" mdInput formControlName="title">
+	</md-input-container>
+
+	<br>
+
+	Credits
+
+	<md-slider #level formControlName="level" min="1" max="15" step="1" value="3" thumbLabel tickInterval="1"></md-slider>
+
+	<br>
+
+
+
+    <button type="submit" md-raised-button color="primary">Create</button>
+
+{{form.value | json}}
+
+</form>
+</md-card>

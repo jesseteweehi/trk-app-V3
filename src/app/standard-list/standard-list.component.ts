@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MdSnackBar} from '@angular/material';
+import { StandardModel } from '../models/standard';
+import { StandardService } from '../shared/standard.service';
 
 @Component({
   selector: 'app-standard-list',
@@ -7,41 +8,24 @@ import {MdSnackBar} from '@angular/material';
   styleUrls: ['./standard-list.component.css']
 })
 export class StandardListComponent implements OnInit {
-	simpleDrop: any = null;
+    edited: boolean = false;
 
-  
-	
+    standardlist: StandardModel[];
 
-    transferData: Object = {id: 1, msg: 'Hello'};
-    receivedData: Array<any> = [];
-    receivedData2: Array<any> = [];
+      constructor(private standardservice: StandardService) { }
 
-    transferDataSuccess($event: any) {
-    	if (this.receivedData.length < 4 ) {
-            this.receivedData.push($event);
-    		}
-        else {
-          this.snackBar.open('Max of 4 Subjects', 'Undo', {
-            duration: 3000
-          })        
+      ngOnInit() {
+        this.standardservice.findAllStandards()
+        .subscribe(standards => this.standardlist = standards)
       }
-    }
 
-    transferDataSuccess2($event: any) {
-    	if (this.receivedData2.length < 4 ) {
-            this.receivedData2.push($event);
-        }
+      open() {
+        this.edited = true
       }
-      
 
-
-  constructor(public snackBar: MdSnackBar) { 
-   
+      close() {
+        this.edited = false
+      }
   }
-
-  ngOnInit() {
-  }
-
-}
 
 

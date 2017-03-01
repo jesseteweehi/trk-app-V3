@@ -17,8 +17,9 @@ import {DndModule} from 'ng2-dnd';
 
 
 import { AuthService } from './security/auth.service';
-import { StudentService } from './shared/student.service'
-import { SubjectService } from './shared/subject.service'
+import { StudentService } from './shared/student.service';
+import { SubjectService } from './shared/subject.service';
+import { StandardService } from './shared/standard.service';
 
 
 import { AppComponent } from './app.component';
@@ -27,7 +28,8 @@ import { StudentFormComponent } from './student-form/student-form.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { MySubjectListComponent } from './my-subject-list/my-subject-list.component';
 import { SubjectFormComponent } from './subject-form/subject-form.component';
-import { StandardListComponent } from './standard-list/standard-list.component'
+import { StandardListComponent } from './standard-list/standard-list.component';
+import { StandardFormComponent } from './standard-form/standard-form.component'
 
 
 
@@ -54,6 +56,7 @@ const myFirebaseAuthConfig = {
     MySubjectListComponent,
     SubjectListComponent,
     StandardListComponent,
+    StandardFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ const myFirebaseAuthConfig = {
     DndModule.forRoot() 
 
   ],
-  providers: [AuthService, StudentService, SubjectService],
+  providers: [AuthService, StudentService, SubjectService, StandardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

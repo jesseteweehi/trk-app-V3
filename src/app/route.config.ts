@@ -6,6 +6,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component'
 import { MySubjectListComponent } from './my-subject-list/my-subject-list.component'
 import { SubjectFormComponent } from './subject-form/subject-form.component'
 import { StandardListComponent } from './standard-list/standard-list.component'
+import { StandardFormComponent } from './standard-form/standard-form.component'
 
 
 export const routerConfig : Route[] = [
@@ -52,7 +53,11 @@ export const routerConfig : Route[] = [
             {
                 path: '',
                 component: StandardListComponent,
-            }
+            },
+            {
+                path: 'new',
+                component: StandardFormComponent,
+            },
 
         ]
     }
