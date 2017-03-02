@@ -1,7 +1,16 @@
 <md-sidenav-container>
   <md-sidenav mode="side" opened="true">
     <!-- sidenav content -->
-    <app-standard-list></app-standard-list>
+    
+    <md-list>
+      <md-list-item *ngFor="let standard of standardlist" dnd-draggable [dragEnabled]="true" [dragData]="standard">
+        <h3 md-line> {{standard.domain}} </h3>
+        <p md-line>
+          <span> {{standard.number}} </span>
+          <span class="demo-2"> -- {{standard.title}} </span>
+        </p>
+      </md-list-item>
+    </md-list>
   </md-sidenav>
 
   <!-- primary content -->
@@ -18,25 +27,23 @@
 
 
 
-  <md-card *ngFor="let subject of subjectlist">
+  <md-card 
+  dnd-droppable 
+  *ngFor="let subject of subjectlist"
+  (onDropSuccess)="transferDataSuccess(subject,$event)">
+
       <md-card-subtitle> {{subject.faculty}}
       <p class="right"> 
   	{{subject.code}}
   	</p></md-card-subtitle>
-      <md-card-title>{{subject.name}}</md-card-title> 
-
-      
-
-  	
+      <md-card-title>{{subject.name}}</md-card-title>
 
       <md-card-content>
-  	
+  	     <b>{{subject.description}}</b>
 
-  	<b>{{subject.description}}</b>
-  	
-  	
-  	
+      <app-subject-standard-list [subject]="subject"></app-subject-standard-list>
 
+         
   	</md-card-content>
 
   	<md-card-actions>

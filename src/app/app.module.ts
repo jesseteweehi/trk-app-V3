@@ -29,7 +29,8 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { MySubjectListComponent } from './my-subject-list/my-subject-list.component';
 import { SubjectFormComponent } from './subject-form/subject-form.component';
 import { StandardListComponent } from './standard-list/standard-list.component';
-import { StandardFormComponent } from './standard-form/standard-form.component'
+import { StandardFormComponent } from './standard-form/standard-form.component';
+import { SubjectStandardListComponent } from './subject-standard-list/subject-standard-list.component'
 
 
 
@@ -57,6 +58,7 @@ const myFirebaseAuthConfig = {
     SubjectListComponent,
     StandardListComponent,
     StandardFormComponent,
+    SubjectStandardListComponent,
   ],
   imports: [
     BrowserModule,

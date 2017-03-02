@@ -20,3 +20,11 @@ b {
 .right {
 	margin-left: auto;
 }
+
+.dnd-drag-start {
+    background-color: yellow;
+}
+
+.dnd-drag-over {
+    background-color: yellow;
+}
