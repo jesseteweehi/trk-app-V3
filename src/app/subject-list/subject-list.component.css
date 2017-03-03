@@ -1,6 +1,6 @@
-md-fab {    
+/*md-fab {    
 	left: 250px;
-}
+}*/
 
 md-card {
 	width: 500px;
@@ -27,4 +27,16 @@ b {
 
 .dnd-drag-over {
     background-color: yellow;
+}
+
+#sidebar { 
+  width: 190px; 
+  position: fixed; 
+  margin-left: 410px; 
+}
+
+#page-wrap { 
+  width: 600px; 
+  margin: 15px auto; 
+  position: relative; 
 }

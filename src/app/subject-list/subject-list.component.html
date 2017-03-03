@@ -1,62 +1,67 @@
-<md-sidenav-container>
-  <md-sidenav mode="side" opened="true">
-    <!-- sidenav content -->
-    
-    <md-list>
-      <md-list-item *ngFor="let standard of standardlist" dnd-draggable [dragEnabled]="true" [dragData]="standard">
-        <h3 md-line> {{standard.domain}} </h3>
-        <p md-line>
-          <span> {{standard.number}} </span>
-          <span class="demo-2"> -- {{standard.title}} </span>
-        </p>
-      </md-list-item>
-    </md-list>
-  </md-sidenav>
+<md-tab-group>
+  <md-tab label="Organise Subjects">
 
-  <!-- primary content -->
-  <button *ngIf="!edited" md-fab (click)="open()">
-  <md-icon>add</md-icon>
-  </button>
+    <md-sidenav-container>
+      <md-sidenav mode="side" opened="true">      
+        <md-list>
+          <md-list-item *ngFor="let standard of standardlist" dnd-draggable [dragEnabled]="true" [dragData]="standard">
+            <h3 md-line> {{standard.domain}} </h3>
+            <p md-line>
+              <span> {{standard.number}} </span>
+              <span class="demo-2"> -- {{standard.title}} </span>
+            </p>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>   
+      <md-card 
+    dnd-droppable 
+    *ngFor="let subject of subjectlist"
+    (onDropSuccess)="transferDataSuccess(subject,$event)">
 
-  <button *ngIf="edited" md-fab (click)="close()">
-  <md-icon>close</md-icon>
-  </button>
+    <md-card-subtitle> {{subject.faculty}}
+      <p class="right"> 
+      {{subject.code}}
+      </p>
+    </md-card-subtitle>
+    <md-card-title>{{subject.name}}</md-card-title>
+      <md-card-content>
+        <b>{{subject.description}}</b>
+        <app-subject-standard-list [subject]="subject"></app-subject-standard-list>
+      </md-card-content>
 
-  <app-subject-form *ngIf="edited"></app-subject-form>
+      <md-card-actions>
+        <a [routerLink]="[subject.$key,'standards' ]" md-button color="primary">Standards</a>
+      </md-card-actions>
+      </md-card>
+    </md-sidenav-container>  
+  </md-tab>
 
-
-
-
-  <md-card 
-  dnd-droppable 
-  *ngFor="let subject of subjectlist"
-  (onDropSuccess)="transferDataSuccess(subject,$event)">
+  <md-tab label="Subject List">
+    <md-card *ngFor="let subject of subjectlist">
 
       <md-card-subtitle> {{subject.faculty}}
-      <p class="right"> 
-  	{{subject.code}}
-  	</p></md-card-subtitle>
-      <md-card-title>{{subject.name}}</md-card-title>
-
+        <p class="right"> {{subject.code}}</p>
+      </md-card-subtitle>
+      <md-card-title>
+        {{subject.name}}
+      </md-card-title>
       <md-card-content>
-  	     <b>{{subject.description}}</b>
+        <b>{{subject.description}}</b>
+        <app-subject-standard-list [subject]="subject"></app-subject-standard-list>     
+      </md-card-content>
+      <md-card-actions>
+        <a [routerLink]="[subject.$key,'standards' ]" md-button color="primary">Standards</a>
+      </md-card-actions>
+    </md-card>    
+  </md-tab> 
 
-      <app-subject-standard-list [subject]="subject"></app-subject-standard-list>
-
-         
-  	</md-card-content>
-
-  	<md-card-actions>
-  	   <a [routerLink]="[subject.$key,'standards' ]" md-button color="primary">Standards</a>
-  	 <!--   <a md-button color="primary">Goals</a>
-  	   <a md-button color="primary">Pathway</a> -->
-  		
-
-  	</md-card-actions>
+  <md-tab label="New Subject">
+    <app-subject-form></app-subject-form>
+  </md-tab>
+</md-tab-group>
 
 
-  </md-card>
-</md-sidenav-container>
+
 
 
 

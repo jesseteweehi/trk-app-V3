@@ -1,22 +1,25 @@
-<button *ngIf="!edited" md-fab (click)="open()">
-<md-icon>add</md-icon>
-</button>
+<md-tab-group>
+  <md-tab label="Standards">
+    <md-card *ngFor="let standard of standardlist">
+        <md-card-subtitle>{{standard.field}} | {{standard.subfield}} | {{standard.domain}}
+        <p class="right"> 
+      {{standard.number}}
+      </p></md-card-subtitle>
+        <md-card-title>{{standard.standardtype}} | {{standard.assessmenttype}} | {{standard.level}} | {{standard.credits}} Credits
+        </md-card-title>
 
-<button *ngIf="edited" md-fab (click)="close()">
-<md-icon>close</md-icon>
-</button>
+        <md-card-content>
+          {{standard.title}}
+        </md-card-content>
+    </md-card>
+  </md-tab>
+  <md-tab label="New Standard">
+    <app-standard-form></app-standard-form>
+  </md-tab>  
+</md-tab-group>
 
-<app-standard-form *ngIf="edited"></app-standard-form>
 
-<md-card *ngFor="let standard of standardlist">
-    <md-card-subtitle>{{standard.field}} | {{standard.subfield}} | {{standard.domain}}
-    <p class="right"> 
-  {{standard.number}}
-  </p></md-card-subtitle>
-    <md-card-title>{{standard.standardtype}} | {{standard.assessmenttype}} | {{standard.level}} | {{standard.credits}} Credits
-    </md-card-title>
 
-    <md-card-content>
-      {{standard.title}}
-    </md-card-content>
-</md-card>
+
+
+
