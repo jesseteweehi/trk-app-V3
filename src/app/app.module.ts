@@ -30,7 +30,11 @@ import { MySubjectListComponent } from './my-subject-list/my-subject-list.compon
 import { SubjectFormComponent } from './subject-form/subject-form.component';
 import { StandardListComponent } from './standard-list/standard-list.component';
 import { StandardFormComponent } from './standard-form/standard-form.component';
-import { SubjectStandardListComponent } from './subject-standard-list/subject-standard-list.component'
+import { SubjectStandardListComponent } from './subject-standard-list/subject-standard-list.component';
+import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
+import { MyPathwaysListComponent } from './my-pathways-list/my-pathways-list.component';
+import { MyGoalsListComponent } from './my-goals-list/my-goals-list.component';
+import { MyStudentComponent } from './my-student/my-student.component'
 
 
 
@@ -59,6 +63,10 @@ const myFirebaseAuthConfig = {
     StandardListComponent,
     StandardFormComponent,
     SubjectStandardListComponent,
+    MyDashboardComponent,
+    MyPathwaysListComponent,
+    MyGoalsListComponent,
+    MyStudentComponent,
   ],
   imports: [
     BrowserModule,

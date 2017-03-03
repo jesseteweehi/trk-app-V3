@@ -1,12 +1,15 @@
 import { Route } from "@angular/router";
 
-import { StudentListComponent } from './student-list/student-list.component'
-import { StudentFormComponent } from './student-form/student-form.component'
-import { SubjectListComponent } from './subject-list/subject-list.component'
-import { MySubjectListComponent } from './my-subject-list/my-subject-list.component'
-import { SubjectFormComponent } from './subject-form/subject-form.component'
-import { StandardListComponent } from './standard-list/standard-list.component'
-import { StandardFormComponent } from './standard-form/standard-form.component'
+import { StudentListComponent } from './student-list/student-list.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
+import { StandardListComponent } from './standard-list/standard-list.component';
+
+import { MyStudentComponent } from './my-student/my-student.component';
+import { MySubjectListComponent } from './my-subject-list/my-subject-list.component';
+import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
+import { MyGoalsListComponent } from './my-goals-list/my-goals-list.component';
+import { MyPathwaysListComponent } from './my-pathways-list/my-pathways-list.component';
+
 
 
 export const routerConfig : Route[] = [
@@ -21,19 +24,6 @@ export const routerConfig : Route[] = [
             {
                 path: '',
                 component: StudentListComponent,
-            },
-            {
-                path: 'new',
-                component: StudentFormComponent,
-            },
-            {
-                path: ':id/subjects',
-                children:[
-                    {
-                        path: '',
-                        component: MySubjectListComponent
-                    }
-                ]
             }
         ]
     },
@@ -53,12 +43,22 @@ export const routerConfig : Route[] = [
             {
                 path: '',
                 component: StandardListComponent,
-            },
+            }
+        ]
+    },
+    {
+        path: 'mystudents',
+        children: [
             {
-                path: 'new',
-                component: StandardFormComponent,
-            },
-
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: MyStudentComponent,
+                    }
+                ]
+            
+            }
         ]
     }
 ]

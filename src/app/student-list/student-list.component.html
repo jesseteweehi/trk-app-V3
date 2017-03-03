@@ -1,23 +1,26 @@
 <md-tab-group color="accent">
+    <md-tab label="Student List">
+      <md-card *ngFor="let student of studentslist">
+        <md-card-subtitle>
+        <p class="right"> 
+      {{student.studentIdentification}}
+      </p></md-card-subtitle>
+        <md-card-title>{{student.lastName}}</md-card-title> 
+        <md-card-content>
+        <b>{{student.firstName}}</b>
+      </md-card-content>
+      <md-card-actions>
+         <a [routerLink]="['/mystudents' , student.$key ]" md-button color="primary">Info</a>
+<!--          <a [routerLink]="['/mystudents' , student.$key, 'goals']"md-button color="primary">Goals</a>
+         <a [routerLink]="['/mystudents' , student.$key, 'pathways']"md-button color="primary">Pathway</a>
+         <a [routerLink]="['/mystudents' , student.$key, 'subjects']"md-button color="primary">Subjects</a> -->
+      </md-card-actions>
+      </md-card>  
+    </md-tab>
+
   	<md-tab label="Organise Students"></md-tab>
 
-  	<md-tab label="Student List">
-  		<md-card *ngFor="let student of studentslist">
-  	    <md-card-subtitle>
-  	    <p class="right"> 
-  		{{student.studentIdentification}}
-  		</p></md-card-subtitle>
-  	    <md-card-title>{{student.lastName}}</md-card-title> 
-  	    <md-card-content>
-  			<b>{{student.firstName}}</b>
-  		</md-card-content>
-  		<md-card-actions>
-  		   <a [routerLink]="[student.$key,'subjects' ]" md-button color="primary">Subjects</a>
-  		   <a md-button color="primary">Goals</a>
-  		   <a md-button color="primary">Pathway</a>
-  		</md-card-actions>
-  		</md-card> 	
-  	</md-tab>
+
 
     
 
