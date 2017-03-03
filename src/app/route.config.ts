@@ -12,7 +12,7 @@ import { StandardFormComponent } from './standard-form/standard-form.component'
 export const routerConfig : Route[] = [
     {
         path: '',
-        redirectTo: 'standards..   ÷       llo',
+        redirectTo: 'students',
         pathMatch: 'full'
     },
     {
