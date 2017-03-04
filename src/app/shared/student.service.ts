@@ -15,6 +15,24 @@ export class StudentService {
     this.sdkDb = fb.database().ref();
 
   }
+  findSingleStudentByKey(studentkey: string): Observable<StudentModel> {
+    
+    return this.db.object(`students/${studentkey}`)
+              .map(StudentModel.fromJson)
+
+  }
+
+  // findLessonByUrl(url:string):Observable<Lesson> {
+  //     return this.db.list('lessons', {
+  //         query: {
+  //             orderByChild: 'url',
+  //             equalTo: url
+  //         }
+  //     })
+  //     .filter(results => results && results.length > 0)
+  //     .map(results => Lesson.fromJson(results[0]))
+  //     .do(console.log);
+  // }
 
   findAllStudents(): Observable<StudentModel[]> {
 

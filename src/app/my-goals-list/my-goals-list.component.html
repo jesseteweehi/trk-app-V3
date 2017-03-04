@@ -1,3 +1,14 @@
-<p>
-  my-goals-list works!
-</p>
+<md-list>
+   	<md-list-item *ngFor="let record of recordslist">
+        <h3 md-line> {{record.title }} </h3>
+            <p md-line>
+               	<span> {{record.modified | date}} </span>
+            </p>
+        <button md-button (click)="load(record.content)">Load</button>
+    </md-list-item>
+</md-list>
+
+<button md-button (click)="save()">Save New</button>
+
+<div [froalaEditor] [(froalaModel)]="editorContent"></div>
+

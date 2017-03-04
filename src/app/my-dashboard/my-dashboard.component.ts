@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {StudentModel} from '../models/student';
+
 
 @Component({
   selector: 'app-my-dashboard',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-dashboard.component.css']
 })
 export class MyDashboardComponent implements OnInit {
+	@Input() student: StudentModel
 
   constructor() { }
 

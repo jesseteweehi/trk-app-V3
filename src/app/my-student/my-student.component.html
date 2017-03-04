@@ -1,18 +1,20 @@
 <md-toolbar color="white">
-  <span>Student Name | Student Number</span>
+  <span>{{student.firstName}} {{student.lastName}} | {{student.studentIdentification}}</span>
+
+
 </md-toolbar>
 
 <md-tab-group>
   <md-tab label="Dashboard">
-    <app-my-dashboard></app-my-dashboard>
+    <app-my-dashboard [student]="student"></app-my-dashboard>
   </md-tab>
   <md-tab label="Subjects">
-    <app-my-subject-list></app-my-subject-list>
+    <app-my-subject-list [student]="student"></app-my-subject-list>
   </md-tab>
   <md-tab label="Pathways">
-    <app-my-pathways-list></app-my-pathways-list>
+    <app-my-pathways-list [student]="student"></app-my-pathways-list>
   </md-tab>
   <md-tab label="Goals">
-    <app-my-goals-list></app-my-goals-list>
+    <app-my-goals-list [student]="student"></app-my-goals-list>
   </md-tab>
 </md-tab-group>

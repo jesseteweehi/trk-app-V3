@@ -20,6 +20,7 @@ import { AuthService } from './security/auth.service';
 import { StudentService } from './shared/student.service';
 import { SubjectService } from './shared/subject.service';
 import { StandardService } from './shared/standard.service';
+import { MyStudentService } from './shared/my-student.service';
 
 
 import { AppComponent } from './app.component';
@@ -82,7 +83,7 @@ const myFirebaseAuthConfig = {
     DndModule.forRoot() 
 
   ],
-  providers: [AuthService, StudentService, SubjectService, StandardService ],
+  providers: [AuthService, StudentService, SubjectService, StandardService, MyStudentService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
