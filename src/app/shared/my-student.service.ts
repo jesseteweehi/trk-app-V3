@@ -4,6 +4,7 @@ import {StudentModel} from '../models/student'
 import {RecordModel} from '../models/record'
 import {AngularFireDatabase, FirebaseRef} from "angularfire2";
 import {Http} from "@angular/http";
+import {firebaseConfig} from "../app.module";
 
 
 @Injectable()
@@ -18,9 +19,34 @@ export class MyStudentService {
 
 	this.sdkDb = fb.database().ref();
 
-
-
 	}
+
+	updateGoalRecord(recordkey:string, record:any) {
+
+		let dataToSave = {};
+
+		dataToSave["goals/" + recordkey + '/' + 'modified'] = record.modified;
+		dataToSave["goals/" + recordkey + '/' + 'content'] = record.content;
+		
+		return this.firebaseUpdate(dataToSave);
+	}
+
+	updateGoalTitle(recordkey:string, title:string) {
+		const item$ = this.db.object('goals/' + recordkey)
+		item$.update({ title: title})
+	}
+
+	deleteGoal(studentkey: string,  goalkey:string) {
+
+		const item$ = this.db.object(`goalsforstudent/${studentkey}/${goalkey}`);
+		item$.remove();
+		console.log(goalkey ,':deleted')
+
+        // const url = firebaseConfig.databaseURL + '/goalsforstudent/' + studentkey +'/'+ goalkey + '/' + true + '.json';
+        // console.log(url)
+
+        // return this.http.delete(url);
+    }
 
 	findGoalsForStudentKeys(goalKeys$: Observable<any[]>) :Observable<any> {
 		return goalKeys$

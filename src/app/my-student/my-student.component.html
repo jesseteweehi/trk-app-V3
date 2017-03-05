@@ -1,10 +1,10 @@
 <md-toolbar color="white">
-  <span>{{student.firstName}} {{student.lastName}} | {{student.studentIdentification}}</span>
+  <span>{{student?.firstName}} {{student?.lastName}} | {{student?.studentIdentification}}</span>
 
 
 </md-toolbar>
 
-<md-tab-group>
+<md-tab-group *ngIf="student">
   <md-tab label="Dashboard">
     <app-my-dashboard [student]="student"></app-my-dashboard>
   </md-tab>

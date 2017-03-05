@@ -1,14 +1,55 @@
 <md-list>
-   	<md-list-item *ngFor="let record of recordslist">
-        <h3 md-line> {{record.title }} </h3>
-            <p md-line>
-               	<span> {{record.modified | date}} </span>
-            </p>
-        <button md-button (click)="load(record.content)">Load</button>
-    </md-list-item>
-</md-list>
+	<md-list-item *ngIf="!edited">	
+		<md-chip-list>
+			<md-chip>Goals {{recordslist?.length }}</md-chip>
+		</md-chip-list>
 
-<button md-button (click)="save()">Save New</button>
+		<button md-icon-button (click)="show()">
+			<md-icon *ngIf="recordslist?.length > 0">add</md-icon>
+		</button>
+
+		<button class="right" color="primary" md-raised-button (click)="savenew()">
+			Save New 
+		</button>
+	</md-list-item>
+	<md-list-item *ngIf="edited">
+		<md-chip-list>
+			<md-chip>Goals {{recordslist?.length }}</md-chip>
+		</md-chip-list>
+
+		<button md-icon-button (click)="close()">
+			<md-icon>close</md-icon>
+		</button>
+
+		<button class="right" color="primary" md-raised-button (click)="savenew()">
+			Save New 
+		</button>
+	</md-list-item>
+	<div *ngIf="edited">
+   	<md-list-item dense *ngFor="let record of recordslist"> 
+   		<md-icon md-list-icon>insert_drive_file</md-icon>
+        
+        <h5 *ngIf="showtitle!==record.$key" (click)="unhide(record.$key)"> {{record.title }} </h5> 
+
+  
+        <md-input-container style="min-width: 200px; width: 400px" *ngIf="showtitle===record.$key">
+          <input #title mdInput  value="{{record.title}}" (keyup.enter)="savetitle(record.$key, title.value)">
+        </md-input-container>
+     
+
+        <button class="right" md-icon-button (click)="delete(record.$key)">
+        <md-icon>delete</md-icon>
+        </button> 
+        <button  md-icon-button (click)="load(record.content)">
+        <md-icon>file_upload</md-icon>
+        </button>
+        <button md-icon-button (click)="update(record.$key)">
+        <md-icon>save</md-icon>
+        </button>
+        <span class="modified"><h5> {{record.modified | date}} </h5> </span>
+    </md-list-item>
+    </div>
+</md-list>
 
 <div [froalaEditor] [(froalaModel)]="editorContent"></div>
 
