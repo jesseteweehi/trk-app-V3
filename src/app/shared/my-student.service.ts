@@ -21,6 +21,58 @@ export class MyStudentService {
 
 	}
 
+	updatePathwayRecord(recordkey:string, record:any) {
+
+		let dataToSave = {};
+
+		dataToSave["pathways/" + recordkey + '/' + 'modified'] = record.modified;
+		dataToSave["pathways/" + recordkey + '/' + 'content'] = record.content;
+		
+		return this.firebaseUpdate(dataToSave);
+	}
+
+	updatePathwayTitle(recordkey:string, title:string) {
+		const item$ = this.db.object('pathways/' + recordkey)
+		item$.update({ title: title})
+	}
+
+	deletePathway(studentkey: string,  pathwaykey:string) {
+
+		const item$ = this.db.object(`pathwaysforstudent/${studentkey}/${pathwaykey}`);
+		item$.remove();
+		
+    }
+
+	findPathwaysForStudentKeys(pathwayKeys$: Observable<any[]>) :Observable<any> {
+		return pathwayKeys$
+			.map(gps => gps.map(pathkey => this.db.object('pathways/' + pathkey.$key)))
+			.flatMap(fbojs => Observable.combineLatest(fbojs))
+			
+
+	}
+
+	findallPathwaysForStudent(studentKey:string): Observable<RecordModel[]> {
+		return this.findPathwaysForStudentKeys(this.db.list(`pathwaysforstudent/${studentKey}`))
+			.map(RecordModel.fromJsonList)
+			.do(console.log)
+	}
+
+	createNewPathway(studentKey, record:any): Observable<any> {
+
+	      const recordToSave = Object.assign({'created': Date.now() }, record);
+
+	      const newRecordKey = this.sdkDb.child('pathways').push().key;
+
+	      let dataToSave = {};
+
+	      dataToSave["pathways/" + newRecordKey] = recordToSave;
+	      dataToSave["pathwaysforstudent/" + studentKey + "/" + newRecordKey] = true
+
+	      return this.firebaseUpdate(dataToSave);
+	}
+
+	//////////	
+
 	updateGoalRecord(recordkey:string, record:any) {
 
 		let dataToSave = {};

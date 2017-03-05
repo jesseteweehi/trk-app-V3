@@ -1,0 +1,27 @@
+md-icon {
+	color: grey;
+}
+
+.editor {
+	min-height: 500px;
+}
+
+.md-list-icon {
+	margin-right: 20px;
+}
+
+.modified {
+	margin-left: 10px
+}
+
+.right {
+	margin-left: auto
+}
+
+h5, md-input-container {
+	margin-left: 50px
+}
+
+md-list-item:not(:last-child) {
+    border-bottom: solid 1px lightgrey
+}
