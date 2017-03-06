@@ -1,44 +1,15 @@
-html, body, md-sidenav-container {
-
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-}
-
-md-sidenav {
-  width: 600px;
-  background-color: lightgrey;
-  height: 100%;
+.container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 md-card {
-    margin: 5px;
-}
-
-.flex-container {
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-    height: 250px;
-}
-
-md-card {
-    flex-grow: 5;
-    height: 190px;
-    margin: 10px;
-}
-
-.small {
-    flex-grow: 1;
-    height: 100px;
-    margin: 10px;
-}
-
-.dnd-drag-start {
-    background-color: yellow
-}
-
-.dnd-drag-over {
-    background-color: yellow
+  flex: none;
+  flex-grow: 1;
+  min-height: 200px;
+  width: 150px;
+  margin: 2px;
 }

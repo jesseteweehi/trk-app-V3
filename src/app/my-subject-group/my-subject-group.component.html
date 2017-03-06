@@ -14,12 +14,12 @@
 
     <app-subject-group-form [student]=student> </app-subject-group-form> 
 
-    <div *ngFor="let group of subjectGroupList" class="container">
+ 
 	
- 	<app-my-subject-list [subjectgroup]="group"
+ 	<app-my-subject-list class="container" *ngFor="let group of subjectGroupList" [subjectgroup]="group"
 	dnd-droppable (onDropSuccess)="transferDataSuccess(group.$key, $event.dragData.$key)" 
 	></app-my-subject-list>	
-	</div> 
+ 
   	
 </md-sidenav-container>
 
