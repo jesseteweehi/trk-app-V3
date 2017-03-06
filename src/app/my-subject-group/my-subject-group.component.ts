@@ -3,6 +3,7 @@ import {StudentModel} from '../models/student';
 import {SubjectGroupModel} from '../models/subject-group';
 import {SubjectModel} from '../models/subject';
 import { MyStudentService } from '../shared/my-student.service'
+import { SubjectService } from '../shared/subject.service';
 
 @Component({
   selector: 'app-my-subject-group',
@@ -10,15 +11,23 @@ import { MyStudentService } from '../shared/my-student.service'
   styleUrls: ['./my-subject-group.component.css']
 })
 export class MySubjectGroupComponent implements OnInit {
-  @Input() student: StudentModel
+  	@Input() student: StudentModel
+	  subjectGroupList : SubjectGroupModel[]
+    subjectslist: SubjectModel[]
 
-  subjectGroupList : SubjectGroupModel[]
+  	constructor(private mystudentservice: MyStudentService,
+                private subjectservice: SubjectService ) { }
 
-  constructor(private mystudentservice: MyStudentService) { }
+  	ngOnInit() {
+  		this.mystudentservice.findSubjectGroupForStudent(this.student.$key)
+  			.subscribe(subjectgroup => this.subjectGroupList = subjectgroup)
 
-  ngOnInit() {
-  	this.mystudentservice.findSubjectGroupForStudent(this.student.$key)
-  		.subscribe(subjectgroup => this.subjectGroupList = subjectgroup)
-  }
+      this.subjectservice.findAllSubjects()
+      .subscribe(subjects => this.subjectslist = subjects)
+  	}
+
+    transferDataSuccess(groupkey:string, subjectkey: string) {
+         this.mystudentservice.createSubjectForGroup(groupkey, subjectkey)
+    }
 
 }

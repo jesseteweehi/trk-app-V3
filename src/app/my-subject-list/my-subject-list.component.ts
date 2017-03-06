@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SubjectGroupModel } from '../models/subject-group';
 import { SubjectModel } from '../models/subject';
 import { MdSnackBar } from '@angular/material';
+import { MyStudentService} from '../shared/my-student.service'
+
 
 
 @Component({
@@ -10,16 +12,17 @@ import { MdSnackBar } from '@angular/material';
   styleUrls: ['./my-subject-list.component.css']
 })
 export class MySubjectListComponent implements OnInit {
-	@Input() subject: SubjectGroupModel
+	@Input() subjectgroup: SubjectGroupModel
 
+	subjectslist: SubjectModel[]
 
-
-
-	
-
-	constructor(public snackBar: MdSnackBar) { 
+	constructor(
+				private mystudentservice: MyStudentService) { 
 	   
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.mystudentservice.findSubjectsForSubjectGroup(this.subjectgroup.$key)
+			.subscribe(subjects => this.subjectslist = subjects)
+	}
 }

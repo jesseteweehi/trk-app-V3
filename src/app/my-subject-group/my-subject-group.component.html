@@ -1,6 +1,33 @@
-<div *ngIf="subjectGroupList">
-<div *ngFor="let group for subjectGroupList" class="container">
-	<app-my-subject-list [subject]="group"></app-my-subject-list>	
-</div>
-</div>
+
+<md-sidenav-container>
+      <md-sidenav mode="side" opened="true">      
+        <md-list>
+          <md-list-item *ngFor="let subject of subjectslist" dnd-draggable [dragEnabled]="true" [dragData]="subject">
+            <h3 md-line> {{subject.code}} </h3>
+            <p md-line>
+              <span> {{subject.name}} </span>
+              <span class="demo-2"> -- {{subject.description}} </span>
+            </p>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>  
+
+    <app-subject-group-form [student]=student> </app-subject-group-form> 
+
+    <div *ngFor="let group of subjectGroupList" class="container">
+	
+ 	<app-my-subject-list [subjectgroup]="group"
+	dnd-droppable (onDropSuccess)="transferDataSuccess(group.$key, $event.dragData.$key)" 
+	></app-my-subject-list>	
+	</div> 
+  	
+</md-sidenav-container>
+
+
+
+
+
+
+
+
 

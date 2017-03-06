@@ -39,7 +39,7 @@ export class SubjectListComponent implements OnInit {
   	}
 
     transferDataSuccess(subject,$event: any) {
-      this.standardservice.createStandardForSubject(subject.$key,$event.dragData.$key)
+      this.standardservice.createStandardForSubject(subject.$key, $event.dragData.$key)
       // this.subjectsstandards.push($event.dragData)
     }
 }

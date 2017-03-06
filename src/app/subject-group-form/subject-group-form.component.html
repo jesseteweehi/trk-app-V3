@@ -1,0 +1,18 @@
+<form novalidate [formGroup]="form" (submit)="create(form)">
+
+		<md-input-container>
+		   <input placeholder="Subject Group Name" type="text" mdInput formControlName="name">
+		</md-input-container>
+
+        <md-input-container>
+           <input mdInput placeholder="Subject Group Description" formControlName="description">
+        </md-input-container>
+
+        <md-input-container>
+		   <input placeholder="Timeframe" type="text" mdInput formControlName="timeframe">
+		</md-input-container>
+     
+    <button type="submit" md-raised-button color="primary">Create</button>
+
+</form>
+ 

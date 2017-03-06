@@ -1,6 +1,40 @@
 .container {
+	height: 250px;
+	width: 100%;
+	background-color: grey;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-end;
+	align-items: baseline;
+}
+
+html, body, md-sidenav-container {
+
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+
+}
+
+md-sidenav-container {
+
+}
+
+md-sidenav {
+  width: 200px;
+  height: 100%;
+  border-right: solid lightgrey 2px;
+  margin: -5px;
+}
+
+.dnd-drag-start {
+    background-color: yellow;
+}
+
+.dnd-drag-over {
+    background-color: yellow;
 }
