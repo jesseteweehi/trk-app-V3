@@ -1,0 +1,6 @@
+<div *ngIf="subjectGroupList">
+<div *ngFor="let group for subjectGroupList" class="container">
+	<app-my-subject-list [subject]="group"></app-my-subject-list>	
+</div>
+</div>
+

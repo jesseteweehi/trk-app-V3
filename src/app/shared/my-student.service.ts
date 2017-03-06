@@ -1,7 +1,9 @@
 import {Injectable, Inject} from '@angular/core';
 import {Observable, Subject} from "rxjs/Rx";
 import {StudentModel} from '../models/student'
+import {SubjectModel} from '../models/subject'
 import {RecordModel} from '../models/record'
+import {SubjectGroupModel} from '../models/subject-group'
 import {AngularFireDatabase, FirebaseRef} from "angularfire2";
 import {Http} from "@angular/http";
 import {firebaseConfig} from "../app.module";
@@ -21,7 +23,77 @@ export class MyStudentService {
 
 	}
 
-	updatePathwayRecord(recordkey:string, record:any) {
+	findSubjectKeysForSubjectGroup(subjectkeys$: Observable<any[]>) : Observable<any> {
+		return subjectkeys$
+			.map(spg => spg.map(subjectkey => this.db.object('subjects' + subjectkey.$key)))
+			.flatMap(fbojs => Observable.combineLatest(fbojs))
+
+	}
+
+	findSubjectsForSubjectGroup(subjectgroupkey:string): Observable<any> {
+		return this.findSubjectKeysForSubjectGroup(this.db.list(`subjectsforsubjectgroups/${subjectgroupkey}`))
+			.map(SubjectModel.fromJsonList)
+	}
+
+	findSubjectGroupKeysForStudentKeys(subjectgroupkeys$: Observable<any[]>) :Observable<any> {
+		return subjectgroupkeys$
+			.map(sgps => sgps.map(subjectgroupkey => this.db.object('subjectgroups/' + subjectgroupkey.$key)) )
+			.flatMap(fbojs => Observable.combineLatest(fbojs))
+	}
+
+	findSubjectGroupForStudent(studentkey:string) :Observable<any> {
+		return this.findSubjectGroupKeysForStudentKeys(this.db.list(`subjectgroupsforstudent/${studentkey}`))
+			.map(SubjectGroupModel.fromJsonList)
+
+	}
+
+	createSubjectGroup(studentkey:string, data: any) :Observable<any>{ 
+		
+		const subjectGroupToSave = Object.assign({'created': Date.now() }, data);
+
+	    const newSubjectGroupKey = this.sdkDb.child('subjectgroups').push().key;
+
+	    let dataToSave = {};
+
+	    dataToSave["subjectgroups/" + newSubjectGroupKey] = subjectGroupToSave;
+	    dataToSave["subjectgroupsforstudent/" + studentkey + "/" + newSubjectGroupKey] = true
+
+	    return this.firebaseUpdate(dataToSave);
+	}
+
+	updateSubjectGroup(subjectgroupkey:string, data:any) {
+		
+		const subjectGroupToSave = Object.assign({'modified': Date.now() }, data);
+
+		let dataToSave = {};
+
+		dataToSave["subjectgroups/" + subjectgroupkey] = subjectGroupToSave;
+
+		return this.firebaseUpdate(dataToSave);
+
+	}
+
+	createSubjectForGroup( groupkey:string, subjectkey:string): Observable<any>{
+		let dataToSave = {};
+
+		dataToSave['subjectsforsubjectgroups/' + groupkey +'/'+ subjectkey] = true
+
+		return this.firebaseUpdate(dataToSave);
+	}
+
+	removeGroup(studentkey:string, groupkey:string) {
+		const item$ = this.db.object(`subjectgroupsforstudent/${studentkey}/${groupkey}`);
+		item$.remove();
+	}
+
+	removeSubjectForGroup( groupkey:string, subjectkey:string) {
+		const item$ = this.db.object(`subjectsforsubjectgroups/${groupkey}/${subjectkey}`);
+		item$.remove();
+	}
+
+	//////////
+
+	updatePathwayRecord(recordkey:string, record:any) :Observable<any> {
 
 		let dataToSave = {};
 

@@ -35,7 +35,8 @@ import { SubjectStandardListComponent } from './subject-standard-list/subject-st
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { MyPathwaysListComponent } from './my-pathways-list/my-pathways-list.component';
 import { MyGoalsListComponent } from './my-goals-list/my-goals-list.component';
-import { MyStudentComponent } from './my-student/my-student.component'
+import { MyStudentComponent } from './my-student/my-student.component';
+import { MySubjectGroupComponent } from './my-subject-group/my-subject-group.component'
 
 
 
@@ -68,6 +69,7 @@ const myFirebaseAuthConfig = {
     MyPathwaysListComponent,
     MyGoalsListComponent,
     MyStudentComponent,
+    MySubjectGroupComponent,
   ],
   imports: [
     BrowserModule,

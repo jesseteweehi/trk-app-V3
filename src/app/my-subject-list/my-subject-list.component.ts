@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {StudentModel} from '../models/student';
-import {MdSnackBar} from '@angular/material';
+import { SubjectGroupModel } from '../models/subject-group';
+import { SubjectModel } from '../models/subject';
+import { MdSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-my-subject-list',
@@ -8,7 +10,9 @@ import {MdSnackBar} from '@angular/material';
   styleUrls: ['./my-subject-list.component.css']
 })
 export class MySubjectListComponent implements OnInit {
-	@Input() student: StudentModel
+	@Input() subject: SubjectGroupModel
+
+
 
 
 	
