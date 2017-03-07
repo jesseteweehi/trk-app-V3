@@ -3,7 +3,7 @@
       <md-sidenav mode="side" opened="true">      
         <md-list>
           <md-list-item *ngFor="let subject of subjectslist" dnd-draggable [dragEnabled]="true" [dragData]="subject">
-            <h3 md-line> {{subject.code}} </h3>
+            <h3 md-line> {{subject.$key}} </h3>
             <p md-line>
               <span> {{subject.name}} </span>
               <span class="demo-2"> -- {{subject.description}} </span>
@@ -15,10 +15,11 @@
     <app-subject-group-form [student]=student> </app-subject-group-form> 
 
  
-	
- 	<app-my-subject-list class="container" *ngFor="let group of subjectGroupList" [subjectgroup]="group"
+
+ 	<app-my-subject-list (removegroup)="removeGroupClicked($event)" *ngFor="let group of subjectGroupList" [subjectgroup]="group" 
 	dnd-droppable (onDropSuccess)="transferDataSuccess(group.$key, $event.dragData.$key)" 
 	></app-my-subject-list>	
+
  
   	
 </md-sidenav-container>

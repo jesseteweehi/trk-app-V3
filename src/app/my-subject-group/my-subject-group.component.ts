@@ -30,4 +30,12 @@ export class MySubjectGroupComponent implements OnInit {
          this.mystudentservice.createSubjectForGroup(groupkey, subjectkey)
     }
 
+    removeGroupClicked(groupkey:string) {
+      if (this.subjectGroupList.length > 1) {this.mystudentservice.removeGroup(this.student.$key,groupkey)}
+      else{
+        this.mystudentservice.removeGroup(this.student.$key,groupkey);
+        this.subjectGroupList = null}
+   
+    }
+
 }

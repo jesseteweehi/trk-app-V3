@@ -25,7 +25,7 @@ export class MyStudentService {
 
 	findSubjectKeysForSubjectGroup(subjectkeys$: Observable<any[]>) : Observable<any> {
 		return subjectkeys$
-			.map(spg => spg.map(subjectkey => this.db.object('subjects' + subjectkey.$key)))
+			.map(spg => spg.map(subjectkey => this.db.object('subjects/' + subjectkey.$key)))
 			.flatMap(fbojs => Observable.combineLatest(fbojs))
 
 	}
@@ -76,7 +76,7 @@ export class MyStudentService {
 	createSubjectForGroup( groupkey:string, subjectkey:string): Observable<any>{
 		let dataToSave = {};
 
-		dataToSave['subjectsforsubjectgroups/' + groupkey +'/'+ subjectkey] = true
+		dataToSave[`subjectsforsubjectgroups/${groupkey}/${subjectkey}`] = true
 
 		return this.firebaseUpdate(dataToSave);
 	}

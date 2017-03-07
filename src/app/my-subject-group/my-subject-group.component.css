@@ -9,9 +9,6 @@ html, body, md-sidenav-container {
 
 }
 
-md-sidenav-container {
-
-}
 
 md-sidenav {
   width: 200px;
@@ -28,10 +25,4 @@ md-sidenav {
     background-color: yellow;
 }
 
-.container {
-	height: 300px;
-	width: 100%;
-	background-color: grey;
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
+

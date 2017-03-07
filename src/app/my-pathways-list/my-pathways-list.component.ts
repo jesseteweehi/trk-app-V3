@@ -30,7 +30,7 @@ export class MyPathwaysListComponent implements OnInit {
 	  	const editorToSave = {};
 	    editorToSave['content'] = this.editorContent
 	    editorToSave['modified'] = Date.now()
-	    editorToSave['title'] = 'New Goal'
+	    editorToSave['title'] = 'New Pathway Conversation'
 
 	    this.mystudentservice.createNewPathway(this.student.$key, editorToSave)
 	    this.edited = true
