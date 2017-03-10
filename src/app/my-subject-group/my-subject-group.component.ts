@@ -27,6 +27,7 @@ export class MySubjectGroupComponent implements OnInit {
   	}
 
     transferDataSuccess(groupkey:string, subjectkey: string) {
+        
          this.mystudentservice.createSubjectForGroup(groupkey, subjectkey)
     }
 

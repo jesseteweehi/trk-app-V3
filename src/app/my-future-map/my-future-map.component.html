@@ -1,0 +1,19 @@
+ {{ standardlist?.length }}
+
+    <md-card *ngFor="let standard of standardlist">
+        <md-card-subtitle>{{standard.field}} | {{standard.subfield}} | {{standard.domain}}
+        <p class="right"> 
+      {{standard.number}}
+      </p></md-card-subtitle>
+        <md-card-title>{{standard.standardtype}} | {{standard.assessmenttype}} | {{standard.level}} | {{standard.credits}} Credits
+        </md-card-title>
+
+        <md-card-content>
+          {{standard.title}}
+        </md-card-content>
+    </md-card>
+
+ <!--   <div *ngFor="let standard of standardlist | async">
+   {{Object | json }}
+   </div> -->
+

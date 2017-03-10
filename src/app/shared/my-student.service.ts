@@ -1,9 +1,11 @@
 import {Injectable, Inject} from '@angular/core';
 import {Observable, Subject} from "rxjs/Rx";
 import {StudentModel} from '../models/student'
+import {SubjectGroupModel} from '../models/subject-group'
 import {SubjectModel} from '../models/subject'
 import {RecordModel} from '../models/record'
-import {SubjectGroupModel} from '../models/subject-group'
+import {StandardModel} from '../models/standard'
+
 import {AngularFireDatabase, FirebaseRef} from "angularfire2";
 import {Http} from "@angular/http";
 import {firebaseConfig} from "../app.module";
@@ -22,6 +24,40 @@ export class MyStudentService {
 	this.sdkDb = fb.database().ref();
 
 	}
+
+	findStandardsforCourses(studentkey:string): Observable<any> {
+		const subjectgroups$ = this.db.list(`subjectgroupsforstudent/${studentkey}`)
+									.map(x => x.map(next => this.db.list(`subjectsforsubjectgroups/${next.$key}`)))
+									.flatMap(next => Observable.combineLatest(next))
+									.map(arrayofobjects => {
+										return [].concat.apply([], arrayofobjects)
+									} )
+									.map(object => object.map(next => this.db.list(`standardsforcourse/${next.$key}`)))
+									.flatMap(next => Observable.combineLatest(next))
+									.map(arrayofobjects => {
+										return [].concat.apply([], arrayofobjects)
+									} )
+									.map(object => object.map(next => this.db.object(`standards/${next.$key}`)))
+									.flatMap(next => Observable.combineLatest(next))
+									.map(StandardModel.fromJsonList)
+									// .flatMap(next => Observable.combineLatest(next))
+									
+									
+
+
+									
+		// const subjects$
+		// 	
+									
+
+		// let subjects$ = this.findSubjectsForSubjectGroup(subjectsgroup$)
+
+		return subjectgroups$
+	}
+
+	//Map Subject Groups for Student
+	//Map Subjects for Subject Groups
+	//Map Standards for subjects
 
 	findSubjectKeysForSubjectGroup(subjectkeys$: Observable<any[]>) : Observable<any> {
 		return subjectkeys$
@@ -126,7 +162,7 @@ export class MyStudentService {
 	findallPathwaysForStudent(studentKey:string): Observable<RecordModel[]> {
 		return this.findPathwaysForStudentKeys(this.db.list(`pathwaysforstudent/${studentKey}`))
 			.map(RecordModel.fromJsonList)
-			.do(console.log)
+		
 	}
 
 	createNewPathway(studentKey, record:any): Observable<any> {
@@ -164,8 +200,7 @@ export class MyStudentService {
 
 		const item$ = this.db.object(`goalsforstudent/${studentkey}/${goalkey}`);
 		item$.remove();
-		console.log(goalkey ,':deleted')
-
+		
         // const url = firebaseConfig.databaseURL + '/goalsforstudent/' + studentkey +'/'+ goalkey + '/' + true + '.json';
         // console.log(url)
 
@@ -183,7 +218,7 @@ export class MyStudentService {
 	findallGoalsForStudent(studentKey:string): Observable<RecordModel[]> {
 		return this.findGoalsForStudentKeys(this.db.list(`goalsforstudent/${studentKey}`))
 			.map(RecordModel.fromJsonList)
-			.do(console.log)
+		
 	}
 
 	createNewGoal(studentKey, record:any): Observable<any> {

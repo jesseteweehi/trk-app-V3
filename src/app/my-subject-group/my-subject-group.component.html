@@ -3,9 +3,9 @@
       <md-sidenav mode="side" opened="true">      
         <md-list>
           <md-list-item *ngFor="let subject of subjectslist" dnd-draggable [dragEnabled]="true" [dragData]="subject">
-            <h3 md-line> {{subject.$key}} </h3>
+            <h3 md-line> {{subject.code}} </h3>
             <p md-line>
-              <span> {{subject.name}} </span>
+              <span> {{subject.faculty}} </span>
               <span class="demo-2"> -- {{subject.description}} </span>
             </p>
           </md-list-item>
