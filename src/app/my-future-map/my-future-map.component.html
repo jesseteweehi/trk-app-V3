@@ -1,6 +1,15 @@
+<input type="checkbox" [(ngModel)]="l1check" (change)="setlevel()">
+<input type="checkbox" [(ngModel)]="l2check" (change)="setlevel()">
+<input type="checkbox" [(ngModel)]="l3check" (change)="setlevel()">
+
+<br>
+
+{{ l1check }}
+
+
  {{ standardlist?.length }}
 
-    <md-card *ngFor="let standard of standardlist">
+    <md-card *ngFor="let standard of filteredlist">
         <md-card-subtitle>{{standard.field}} | {{standard.subfield}} | {{standard.domain}}
         <p class="right"> 
       {{standard.number}}

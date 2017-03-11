@@ -11,27 +11,51 @@ import { MyStudentService } from '../shared/my-student.service'
 })
 export class MyFutureMapComponent implements OnInit {
 	@Input() student: StudentModel
+	l1check: boolean = false
+	l2check: boolean = false
+	l3check: boolean = false
 
 	standardlist: StandardModel[]
+	filteredlist: StandardModel[]
 
 
   	constructor(private mystudentservice: MyStudentService) { }
 
   	ngOnInit() {
   		this.mystudentservice.findStandardsforCourses(this.student.$key)
-  			.subscribe(standards => this.standardlist = standards)
+  			.subscribe(standards => this.standardlist = this.filteredlist = standards)
 
   	}
 
-  	level1(a) {
-  		if (a) {
-  		const level1standards = a.filter(x => x.level === 1)
- 
-  		return this.standardlist = level1standards
+  	setlevel() {
+  		console.log('checked')
+  		let level1standards : StandardModel[] = []
+  		let level2standards : StandardModel[] = []
+  		let level3standards : StandardModel[] = []
 
+  		if (this.l1check) {
+  			level1standards = this.standardlist.filter(x => x.level == '1');
   		}
 
+  		if (this.l2check) {
+  			level2standards = this.standardlist.filter(x => x.level == '2');
   		}
+
+  		if (this.l3check) {
+  			level3standards = this.standardlist.filter(x => x.level == '3');
+  		}
+
+  		let n : StandardModel[] = []
+
+  		if (this.l1check === true || this.l2check === true || this.l3check === true) {
+  			console.log('some')
+  			this.filteredlist = n.concat(level1standards,level2standards,level3standards)
+  		}
+  		else {
+  			console.log('none')
+  			this.filteredlist = this.standardlist
+  		}
+
+
   	}
-
 }
