@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top:20px;
+
+}
+
+app-circle {
+  flex: none;
+  flex-grow: 1;
+  justify-content: center;
+  min-height: 200px;
+  width: 150px;
+  margin: 2px;
+}
+
+
+
+.numberCircle {
+    background-color: #dd9d22;
+    border-radius: 50%;
+    width: 120px;
+    font-size: 32px;
+    color: white;
+    border: 10px solid #e08833;
+}
+
+.numberCircle:hover {
+    background-color: white;
+    color: #e08833;
+
+}
+.numberCircle span {
+    text-align: center;
+    line-height: 120px;
+    display: block;
+}

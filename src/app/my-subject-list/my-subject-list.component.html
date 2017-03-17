@@ -1,14 +1,21 @@
 <h5>{{subjectgroup.name}} | {{subjectgroup.timeframe}}</h5>
+
 <button md-icon-button (click)="removeGroup(subjectgroup.$key)"><md-icon>delete</md-icon></button>
+
 <div class="container">
 	<md-card *ngFor="let subject of subjectslist">
+		<md-card-subtitle>{{subject.code}} | {{subject.faculty}}</md-card-subtitle>
 		<md-card-title>
-			<button md-icon-button (click)="removeSubject(subject.$key)"><md-icon>delete</md-icon></button>
+			{{subject.name}}
 		</md-card-title>
 		<md-card-content>
-			{{subject | json}}
+			{{subject.description}}
 		</md-card-content>
+		 <md-card-actions>
+   			<button md-icon-button (click)="removeSubject(subject.$key)"><md-icon>delete</md-icon></button>
+  		</md-card-actions>
 	</md-card>
 </div>
+
 
  

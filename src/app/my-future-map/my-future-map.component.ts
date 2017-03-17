@@ -11,19 +11,28 @@ import { MyStudentService } from '../shared/my-student.service'
 })
 export class MyFutureMapComponent implements OnInit {
 	@Input() student: StudentModel
-	l1check: boolean = false
-	l2check: boolean = false
-	l3check: boolean = false
+	l1check: boolean = false;
+	l2check: boolean = false;
+	l3check: boolean = false;
 
-	standardlist: StandardModel[]
-	filteredlist: StandardModel[]
+	standards$: Observable<any>
 
+	standardlist: StandardModel[];
+	filteredlist: StandardModel[];
 
+	
   	constructor(private mystudentservice: MyStudentService) { }
 
   	ngOnInit() {
-  		this.mystudentservice.findStandardsforCourses(this.student.$key)
-  			.subscribe(standards => this.standardlist = this.filteredlist = standards)
+  	this.mystudentservice.findStandardsforCourses(this.student.$key)
+  			.subscribe(standards => this.standardlist = this.filteredlist = standards);
+
+
+
+
+
+
+
 
   	}
 
@@ -59,3 +68,12 @@ export class MyFutureMapComponent implements OnInit {
 
   	}
 }
+
+
+// What does the dashboard need?
+// NCEA Levels Certification.
+// Literacy
+// Numeracy
+// UE Literacy Reading
+// UE Literacy Writing
+// Vocational Pathway

@@ -38,7 +38,9 @@ import { MyGoalsListComponent } from './my-goals-list/my-goals-list.component';
 import { MyStudentComponent } from './my-student/my-student.component';
 import { MySubjectGroupComponent } from './my-subject-group/my-subject-group.component';
 import { SubjectGroupFormComponent } from './subject-group-form/subject-group-form.component';
-import { MyFutureMapComponent } from './my-future-map/my-future-map.component'
+import { MyFutureMapComponent } from './my-future-map/my-future-map.component';
+import { AdminComponent } from './admin/admin.component';
+import { CircleComponent } from './circle/circle.component'
 
 
 
@@ -74,6 +76,8 @@ const myFirebaseAuthConfig = {
     MySubjectGroupComponent,
     SubjectGroupFormComponent,
     MyFutureMapComponent,
+    AdminComponent,
+    CircleComponent,
   ],
   imports: [
     BrowserModule,

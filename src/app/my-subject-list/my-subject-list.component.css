@@ -1,9 +1,10 @@
 .container {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+
+/*  overflow-x: scroll;*/
+/*  overflow-y: hidden;
+  white-space: nowrap;*/
 }
 
 md-card {
@@ -13,3 +14,6 @@ md-card {
   width: 150px;
   margin: 2px;
 }
+
+
+

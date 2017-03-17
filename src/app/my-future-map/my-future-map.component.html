@@ -1,15 +1,21 @@
-<input type="checkbox" [(ngModel)]="l1check" (change)="setlevel()">
-<input type="checkbox" [(ngModel)]="l2check" (change)="setlevel()">
-<input type="checkbox" [(ngModel)]="l3check" (change)="setlevel()">
-
+<div class="container">
+<app-circle [credits]="'150'"></app-circle>
+<app-circle [credits]="'90'"></app-circle>
+<app-circle [credits]="'40'"></app-circle>
+</div>
 <br>
 
-{{ l1check }}
+<md-checkbox [(ngModel)]="l1check" (change)="setlevel()">Level 1</md-checkbox>
+<md-checkbox [(ngModel)]="l2check" (change)="setlevel()">Level 2</md-checkbox>
+<md-checkbox [(ngModel)]="l3check" (change)="setlevel()">Level 3</md-checkbox>
 
 
- {{ standardlist?.length }}
 
-    <md-card *ngFor="let standard of filteredlist">
+
+
+
+
+<md-card *ngFor="let standard of filteredlist">
         <md-card-subtitle>{{standard.field}} | {{standard.subfield}} | {{standard.domain}}
         <p class="right"> 
       {{standard.number}}
@@ -20,9 +26,6 @@
         <md-card-content>
           {{standard.title}}
         </md-card-content>
-    </md-card>
+</md-card>
 
- <!--   <div *ngFor="let standard of standardlist | async">
-   {{Object | json }}
-   </div> -->
 
